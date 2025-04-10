@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #000;
+            color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #111;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #b400ff;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #b400ff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: #fff;
+        }
+
+        .menu-toggle:focus {
+            outline: none;
+        }
+
+        section {
+            padding: 60px 40px;
+            border-bottom: 1px solid #222;
+        }
+
+        section h2 {
+            color: #b400ff;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        #home {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 120px;
+            border-bottom: 1px solid #222
+        }
+
+        .home-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .home-text h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .home-text p {
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #b400ff;
+        }
+
+        .home-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .home-image img {
+            width: 400px;
+            border-radius: 50%;
+            border: 5px solid #b400ff;
+            box-shadow: 0 0 60px #b400ff;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .home-text {
+            flex: 1;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* ini penting agar semua isi termasuk ikon ikut ke tengah */
+            text-align: center;
+        }
+
+
+
+        .social-icons a {
+            color: white;
+            font-size: 35px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #b400ff;
+        }
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .fa-html5 {
+            color: #e34c26;
+        }
+
+        .fa-css3-alt {
+            color: #264de4;
+        }
+
+        .fa-js {
+            color: #f7df1e;
+        }
+
+        .fa-python {
+            color: #3776ab;
+        }
+
+        .fa-php {
+            color: #777bb4;
+        }
+
+        .fa-database {
+            color: #f29111;
+        }
+
+        .skill-bar {
+            width: 100%;
+            background-color: #333;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 20px;
+            background-color: #b400ff;
+            text-align: right;
+            padding-right: 10px;
+            line-height: 20px;
+            color: white;
+            font-size: 14px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .service-item {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #b400ff;
+        }
+
+        .service-item h3 {
+            margin-top: 0;
+            color: #b400ff;
+        }
+
+        .contact-box {
+            background-color: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .contact-box form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            background-color: #000;
+            border: 1px solid #b400ff;
+            color: white;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .contact-box button {
+            background-color: #b400ff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-box button:hover {
+            background-color: #9000cc;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background-color: #111;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                padding: 10px;
+                border: 1px solid #444;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            #home {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .home-text {
+                margin-top: 20px;
+            }
+
+            .home-image img {
+                width: 250px;
+                margin: 0 auto;
+            }
+        }
+
+        .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">Mu<span>bartyxx</span></div>
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav id="nav">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="home-text">
+            <h1>Hello, I'm <span id="dynamic-text" style="color: #a020f0;">Mubartyxx</span></h1>
+            <p>Seorang siswa Mts yang ingin menjadi programmer. Saya sedang belajar membuat website dengan HTML, CSS,
+                dan JavaScript. Saya juga tertarik dengan dunia desain dan pengembangan aplikasi.</p>
+
+            <!-- Social Icons di sini -->
+            <div class="social-icons">
+                <a href="@mubartyxx"><i class="fab fa-instagram"></i></a>
+                <a href="http://wa.me/6282148418429"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="home-image">
+            <img src="pp.jpeg" alt="Profile Picture" />
+        </div>
+    </section>
+
+    <!-- SKILLS, SERVICES, CONTACT akan tetap seperti sebelumnya -->
+
+    <section id="skills" class="fade-in">
+        <h2>My Skills</h2>
+        <div class="skill">
+            <div class="skill-name"><i class="fab fa-html5"></i> HTML</div>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 100%">100%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><i class="fab fa-css3-alt"></i> CSS</div>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 85%">85%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%">75%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><i class="fab fa-python"></i> Python</div>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 75%">75%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><i class="fab fa-php"></i> PHP</div>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 65%">65%</div>
+            </div>
+        </div>
+        <div class="skill">
+            <div class="skill-name"><i class="fas fa-database"></i> SQL</div>
+            <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%">50%</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="fade-in">
+
+        <h2>My Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <h3>Web Development</h3>
+                <p>Membuat dan mengembangkan website dari tampilan hingga fungsi menggunakan HTML, CSS, dan JavaScript.
+                </p>
+            </div>
+            <div class="service-item">
+                <h3>UI/UX Design</h3>
+                <p>Merancang tampilan website yang menarik dan mudah digunakan untuk meningkatkan pengalaman pengguna.
+                </p>
+            </div>
+            <div class="service-item">
+                <h3>Backend Development</h3>
+                <p>Membangun sistem backend menggunakan PHP dan SQL untuk menangani logika server dan basis data.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="fade-in">
+        <h2>Contact Me</h2>
+        <div class="contact-box">
+            <form>
+                <input type="text" placeholder="Nama" required />
+                <input type="email" placeholder="Email" required />
+                <textarea rows="5" placeholder="Pesan" required></textarea>
+                <button type="submit">Kirim</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('nav').classList.toggle('active');
+        }
+
+
+        function toggleMenu() {
+            document.getElementById('nav').classList.toggle('active');
+        }
+
+        // Text Animation
+        const words = ['MubartyXx', 'Desainer', 'Programming'];
+        let index = 0;
+        const dynamicText = document.querySelector('.dynamic-text');
+
+        setInterval(() => {
+            index = (index + 1) % words.length;
+            dynamicText.textContent = words[index];
+        }, 1500);
+
+
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+    }
+
+    // Scroll animation
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    function handleScroll() {
+        fadeElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add('show');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        const words = ["Mubartyxx", "Desainer", "Programmer"];
+        let currentIndex = 0;
+
+        const textElement = document.getElementById("dynamic-text");
+
+        function changeText() {
+            textElement.textContent = words[currentIndex];
+            currentIndex = (currentIndex + 1) % words.length;
+        }
+
+        setInterval(changeText, 1500);
+    });
+    </script>
+</body>
+
+</html>
